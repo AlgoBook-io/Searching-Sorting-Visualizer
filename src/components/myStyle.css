@@ -1,0 +1,81 @@
+h1 {
+    color: yellow;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+.def{
+    height:50px;
+    padding: 10px 0px 0px 0px;
+    border: 1px solid black;
+}
+
+.q{
+    background-color: rgb(202, 226, 226);
+    transition-duration: .3s;
+}
+
+.lblue{
+    background-color: #2a1879;
+    color: white;
+    transition-duration: .3s;
+    box-shadow: 4px 4px 2px grey;
+}
+
+.mystl{
+    margin-top: 0px;
+}
+
+.red{
+    background-color: red;
+    transition-duration: .3s;
+    color: white;
+    box-shadow: 10px 10px 5px grey;
+}
+
+.green{
+    background-color: #33cc33;
+    transition-duration: .3s;
+    box-shadow: 7px 13px 8px grey;
+}
+
+.inrange{
+    background-color: #1fbba1;
+    box-shadow: 4px 4px 2px grey;
+    transition-duration: .3s;
+}
+.button4{
+    background-color:#463492;
+    color: black;
+    border: 2px solid #e7e7e7;
+  }
+  .button5{
+      background-color: #33cc33;
+  }
+  .button{
+    border:1px solid gray;
+    color: white;
+    padding: 4px 18px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .txt{
+	height: 26px;
+	width: 200px;
+	border-bottom: 2px solid gray;
+	border-radius: 4px;
+}
+.button:hover{
+    background-color: #2a1879;
+    transition-duration: .4s;
+}
+input
+{
+	font-family:Monotype Corsiva;
+	font-size: 20px; 
+}
