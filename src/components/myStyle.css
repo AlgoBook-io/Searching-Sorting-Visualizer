@@ -53,11 +53,11 @@ h1 {
   .button{
     border:1px solid gray;
     color: white;
-    padding: 4px 18px;
+    padding: 2.5px 4px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 14px;
     margin: 4px 2px;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
@@ -73,6 +73,11 @@ h1 {
 .button:hover{
     background-color: #2a1879;
     transition-duration: .4s;
+}
+.button:disabled{
+    cursor: not-allowed;
+    background-color: rgb(212, 210, 231);
+    color: gray
 }
 input
 {
