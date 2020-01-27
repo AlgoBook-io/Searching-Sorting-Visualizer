@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Linear from './linear';
 import './myStyle.css';
 
-const arr=['3','5','4','1','6','7','54','6','32','8765','99'];
+let arr=['372','5','4','1','6','7','54','6','32','8765','99'];
 const n=arr.length;
 class LinearParent extends Component {
     constructor(props) {
@@ -20,6 +20,7 @@ class LinearParent extends Component {
             flag:true
         });
     }
+
 
     shouldComponentUpdate(nextProps,nextState){
         if(this.state.flag)
@@ -81,7 +82,7 @@ class LinearParent extends Component {
         })
     }
     render() {
-        let str=this.state.start===1? <button className="button button4" onClick={this.linearSearch()}>Run</button> : <button className="button button4" onClick={()=>this.linearSearch()}>Run</button>
+        let str=this.state.start===1? <button className="button button4" style={{padding:'5px 14px'}} onClick={this.linearSearch()}>Run</button> : <button className="button button4" style={{padding:'5px 14px'}} onClick={()=>this.linearSearch()}>Run</button>
         return (
             <div>
                 <Linear ar={arr} index={this.state.index} srch={this.state.search} check={this.check}/>
@@ -91,11 +92,13 @@ class LinearParent extends Component {
                 <br/>
                 {str}
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button className="button button4" type='submit' onClick={()=>this.reset()}>Reset</button>
+                <button className="button button4" type='submit' style={{padding:'5px 14px'}} onClick={()=>this.reset()}>Reset</button>
                 <div id="steps">{this.state.steps}</div>
             </div>
         )
     }
 }
-
+function randomIntFromInterval(min, max){
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
 export default LinearParent
