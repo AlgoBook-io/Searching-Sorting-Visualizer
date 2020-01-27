@@ -5,7 +5,7 @@ import MainComponent from './components/MainComponent';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/Searching-Sorting-Visualizer' >
     <div className="App">
       <MainComponent/>
     </div>

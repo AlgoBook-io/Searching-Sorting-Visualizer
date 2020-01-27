@@ -22,7 +22,7 @@ class HomeComponent extends Component {
                     <h3 className="card-title" style={{fontFamily:'Georgia'}}><br/>Searching Visualizer</h3>
                     <p style={{fontFamily: 'Georgia'}} className="card-text">A simple simulation of Linear Search and Binary Search on an array of integers meant for understanding them better.</p>
                     <center>
-                    <NavLink to='/Searching-Sorting-Visualizer/search' style={{width:'70%',color:'white',fontFamily:'Georgia'}} className="btn btn-primary">Searching Algorithms</NavLink>
+                    <NavLink to='/search' style={{width:'70%',color:'white',fontFamily:'Georgia'}} className="btn btn-primary">Searching Algorithms</NavLink>
                     </center>
                 </div>
                 </div>
@@ -36,7 +36,7 @@ class HomeComponent extends Component {
                     <h3 className="card-title" style={{fontFamily:'Georgia'}}>Sorting Visualizer</h3>
                     <p style={{fontFamily: 'Georgia'}} className="card-text">Simulation of Bubble Sort, Selection Sort, Insertion Sort, Merge Sort and Quick Sort on randomly chosen data values.</p>
                     <center>
-                    <NavLink to='/Searching-Sorting-Visualizer/sort' style={{width:'70%',color:'white',fontFamily:'Georgia'}} className="btn btn-primary">Sorting Algorithms</NavLink>
+                    <NavLink to='/sort' style={{width:'70%',color:'white',fontFamily:'Georgia'}} className="btn btn-primary">Sorting Algorithms</NavLink>
                     </center>
                 </div>
                 </div>
