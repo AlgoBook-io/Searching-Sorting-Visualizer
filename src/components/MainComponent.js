@@ -25,10 +25,10 @@ class MainComponent extends Component {
                 <NavLink to='/sort' >Sort</NavLink>
             </div>*/
                 <Switch>
-                    <Route path='/Searching-Sorting-Visualizer/home' component={HomePage} />
+                    <Route path='/Searching-Sorting-Visualizer/' component={HomePage} />
                     <Route path='/Searching-Sorting-Visualizer/search' component={Search} />
                     <Route path='/Searching-Sorting-Visualizer/sort' component={Sort} />
-                    <Redirect to='/Searching-Sorting-Visualizer/home' />
+                    <Redirect to='/Searching-Sorting-Visualizer/' />
                 </Switch>
 //            </div>
 //            </div>
