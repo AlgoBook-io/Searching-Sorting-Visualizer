@@ -60,6 +60,7 @@ class BubbleSort extends Component {
         for (let i = 0; i < this.state.n; i++) {
             array.push(randomIntFromInterval(5, 480));
         }
+        array[randomIntFromInterval(0,this.state.n-1)]=480
         this.setState({
             ar:array
         });
@@ -574,7 +575,7 @@ class BubbleSort extends Component {
     }
     
     merge(ar,l,r,mid,animation){
-        let i=l,j=mid+1,k=l,pq=0
+        let i=l,j=mid+1,k=l
         let i1=l,j1=mid+1
         while(i1<=mid && j1<=r)
         {
@@ -658,7 +659,7 @@ class BubbleSort extends Component {
             ctr:0
         };
         let len=animations.length;
-        const arr_bar=document.getElementsByClassName('array-bar');
+        let arr_bar=document.getElementsByClassName('array-bar');
         for(let i=0;i<len;i++)
         {
             let idx1=animations[i].i;
@@ -710,6 +711,167 @@ class BubbleSort extends Component {
             this.buttons(false,(animations.length)*this.state.delay);
             reset=false;
         }, (animations.length+1)*this.state.delay);
+        timeouts.push(qq);
+    }
+
+    //quick sort
+    quickSortAnimations(ar){
+        const animation=[]
+        this.quickSort1(ar,0,ar.length-1,animation)
+        return animation
+    }
+    quickSort1(ar,low,high,animation){
+        console.log(low+" "+high);    
+        if(low===high)
+            animation.push({
+                i:low,
+                j:-1,
+                color:color1
+            })
+            else if(low<high){
+                let par=this.partition(ar,low,high,animation)
+                animation.push({
+                    i:-1,
+                    j:-1,
+                    color:'clean'
+                })
+                this.quickSort1(ar,low,par-1,animation)
+                this.quickSort1(ar,par+1,high,animation)
+            }
+        }
+    partition(ar,low,high,animation){
+        let pivot=ar[high]
+        let i=low-1;
+        animation.push({
+            i:high,
+            j:-1,
+            color:'yellow'
+        })
+        for(let j=low;j<high;j++)
+        {
+            animation.push({
+                i:j,
+                j:-1,
+                color:'palegreen'
+            })
+            if(ar[j]<=pivot)
+            {
+                i++;
+                animation.push({
+                    i:i,
+                    j:j,
+                    color:'swap'
+                })
+                let tmp=ar[i]
+                ar[i]=ar[j]
+                ar[j]=tmp;
+                animation.push({
+                    i:i,
+                    j:j,
+                    color:'op'//op=orangepurple
+                })
+            }
+            else{
+                animation.push({
+                    i:j,
+                    j:-1,
+                    color:'orange'
+                })
+            }
+        }
+        animation.push({
+            i:i+1,
+            j:high,
+            color:'swap'
+        })
+        let tmp=ar[i+1]
+        ar[i+1]=ar[high]
+        ar[high]=tmp
+        animation.push({
+            i:i+1,
+            j:-1,
+            color:color1
+        })
+        return i+1;
+    }
+
+    quickSort(){
+        timeouts=[]
+        if(reset===false)
+        this.resetCSS();
+        this.buttons(true,0);
+        let animations=this.quickSortAnimations(this.state.ar);
+//        return;
+        let ptr=[];
+        for(let i=0;i<this.state.ar.length;i++)
+        ptr[i]={
+            i:i,
+            ctr:0
+        };
+        let len=animations.length;
+        const arr_bar=document.getElementsByClassName('array-bar');
+        for(let i=0;i<len;i++)
+        {
+            let idx1=animations[i].i;
+            let idx2=animations[i].j;
+            if(animations[i].color==='clean')
+            {
+                let qq=setTimeout(() => {
+                    for(let it=0;it<this.state.n;it++)
+                    {
+                        if(arr_bar[ptr[it].i].style.backgroundColor!==color1){
+                        arr_bar[ptr[it].i].style.backgroundColor='blue'
+                        }
+                    }
+                }, i*this.state.delay);
+                timeouts.push(qq);
+            }
+            else if(idx2===-1)
+            {
+                let qq=setTimeout(() => {
+                    arr_bar[ptr[idx1].i].style.backgroundColor=animations[i].color;
+                }, i*this.state.delay);
+                timeouts.push(qq);
+            }
+            else if(animations[i].color==='swap')
+            {
+                let qq=setTimeout(() => {
+                    ptr[idx1].ctr+=idx2-idx1;
+                    let y=ptr[idx1].ctr*(width+2);
+                    arr_bar[ptr[idx1].i].style.transform=`translateX(${y}px)`
+                    ptr[idx2].ctr-=idx2-idx1;
+                    y=ptr[idx2].ctr*(width+2);
+                    arr_bar[ptr[idx2].i].style.transform=`translateX(${y}px)`
+                    let tm=ptr[idx1];
+                    ptr[idx1]=ptr[idx2];
+                    ptr[idx2]=tm;
+                }, i*this.state.delay);
+                timeouts.push(qq);
+            }
+            else if(animations[i].color===color1)
+            {
+                let qq=setTimeout(() => {
+                    arr_bar[ptr[idx1].i].style.backgroundColor=color1
+                    for(let it=0;it<this.state.n;it++)
+                    {
+                        if(arr_bar[ptr[it].i].style.backgroundColor!==color1)
+                        arr_bar[ptr[it].i].style.backgroundColor='blue'
+                    }
+                }, i*this.state.delay);
+                timeouts.push(qq)
+            }
+            else{
+                let qq=setTimeout(() => {
+                    arr_bar[ptr[idx1].i].style.backgroundColor='orange';
+                    arr_bar[ptr[idx1].i].style.backgroundColor='purple';
+                }, i*this.state.delay);
+                timeouts.push(qq)
+            }
+        }
+        let qq=setTimeout(() => {
+            this.buttons(false,(animations.length)*this.state.delay);
+            reset=false;
+        }, (animations.length)*this.state.delay);
         timeouts.push(qq);
     }
     render() {
