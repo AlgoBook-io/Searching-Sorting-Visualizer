@@ -87,7 +87,7 @@ class LinearParent extends Component {
             <div>
                 <Linear ar={arr} index={this.state.index} srch={this.state.search} check={this.check}/>
                 <br/><br/>
-                <label>Enter Search Element</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label style={{fontFamily:'Georgia'}}>Enter Search Element</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type='text' value={this.state.search} onChange={this.searchElementChange} className='txt txt2'></input>
                 <br/>
                 {str}

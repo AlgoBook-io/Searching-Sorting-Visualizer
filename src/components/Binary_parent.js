@@ -103,7 +103,7 @@ class BinaryParent extends Component {
             <div>
                 <Binary l={this.state.l} r={this.state.r} ar={ar} srch={this.state.search} check={this.state.check} />
                 <br/><br/>
-                <label>Enter Search Element</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label style={{fontFamily:'Georgia'}}>Enter Search Element</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type='text' value={this.state.search} onChange={this.searchElementChange} className='txt txt2'></input>
                 <br/>
                 {str}

@@ -921,12 +921,11 @@ class BubbleSort extends Component {
             <button className="button button4" onClick={()=>this.skipAnimations()} id='skip'>Skip</button>
             </div>
             <div>
-            <span><b>Data size </b></span>
-            
+            <span style={{fontFamily:'Georgia'}}><b>Data size </b></span>
             <input type="range"  min={2} max={maxn} defaultValue={4} onChange={()=>this.changeArrSize()} className="slider" id="arr_size"/>
             <span style={{backgroundColor:'gray',color:'white',borderRadius:'6px'}}> {this.state.n}&nbsp;
             </span>
-            <span><b> Speed </b></span>
+            <span style={{fontFamily:'Georgia'}}><b> Speed </b></span>
             <input type="range"  min={1} max={1505} defaultValue={751} onChange={()=>this.changeDelay()} className="slider" id="delay"/>
             <span style={{backgroundColor:'gray',color:'white',borderRadius:'8px'}}> {strdly}&nbsp;</span>
             <div className="array-container">
