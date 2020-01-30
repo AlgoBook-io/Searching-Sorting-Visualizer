@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import './myStyle.css'
+import srchimg from './images/Search_img.png'
+import sortimg from './images/Sort_img.png'
 
 class HomeComponent extends Component {
     render() {
@@ -17,7 +19,7 @@ class HomeComponent extends Component {
                 <div className="col-12 col-md-6">
                 <center>
                 <div className="card insetHover" style={{width: '22rem'}}>
-                <img className="card-img-top" style={{height:'150px'}} src='https://www.tutorialspoint.com/data_structures_algorithms/images/linear_search.gif' alt="Searching image"/>
+                <img className="card-img-top" style={{height:'150px'}} src={srchimg} alt="Searching image"/>
                 <div className="card-body">
                     <h3 className="card-title" style={{fontFamily:'Georgia'}}><br/>Searching Visualizer</h3>
                     <p style={{fontFamily: 'Georgia'}} className="card-text">A simple simulation of Linear Search and Binary Search on an array of integers meant for understanding them better.</p>
@@ -31,7 +33,7 @@ class HomeComponent extends Component {
                 <div className="col-12 col-md-6">
                 <center>
                 <div className="card insetHover" style={{width: '22rem'}}>
-                <img className="card-img-top" src="https://thumbs.gfycat.com/ValuableAnyCoelacanth-size_restricted.gif" alt="Sorting image"/>
+                <img className="card-img-top" src={sortimg} alt="Sorting image"/>
                 <div className="card-body">
                     <h3 className="card-title" style={{fontFamily:'Georgia'}}>Sorting Visualizer</h3>
                     <p style={{fontFamily: 'Georgia'}} className="card-text">Simulation of Bubble Sort, Selection Sort, Insertion Sort, Merge Sort and Quick Sort on randomly chosen data values.</p>
