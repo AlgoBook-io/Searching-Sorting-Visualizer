@@ -11,7 +11,7 @@ class MainComponent extends Component {
                 <HomeComponent/>
             )
         }
-        return (
+        return (/*
             <div className="container">
             <div className="row">
             <div className="col-3 col-md-4"></div>
@@ -23,15 +23,15 @@ class MainComponent extends Component {
             </div>
             <div className="col-2 col-md-1">
                 <NavLink to='/sort' >Sort</NavLink>
-            </div>
+            </div>*/
                 <Switch>
-                    <Route path='/home' component={HomePage} />
+                    <Route exact path='/' component={HomePage} />
                     <Route path='/search' component={Search} />
                     <Route path='/sort' component={Sort} />
-                    <Redirect to='/home' />
+                    <Redirect to='/' />
                 </Switch>
-            </div>
-            </div>
+//            </div>
+//            </div>
         )
     }
 }

@@ -1,11 +1,14 @@
+@import url(https://fonts.googleapis.com/css?family=Cinzel+Decorative:400,900);
+
 h1 {
-    color: yellow;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-shadow: -1px;
   }
 .def{
     height:50px;
     padding: 10px 0px 0px 0px;
     border: 1px solid black;
+    margin:0 1px;
+    border-radius: 5px;
 }
 
 .q{
@@ -51,6 +54,7 @@ h1 {
       background-color: #33cc33;
   }
   .button{
+    font-family:'Georgia';
     border:1px solid gray;
     color: white;
     padding: 2.5px 4px;
@@ -83,4 +87,22 @@ input
 {
 	font-family:Monotype Corsiva;
 	font-size: 20px; 
+}
+
+.mainHeading{
+    font-family: 'Cinzel Decorative',cursive;
+}
+.insetHover{
+    padding: 12px;
+    transition: all .1s linear;
+    font-family: 'Georgia';
+}
+.insetHover:hover
+{
+        box-shadow: inset 0 0 0 12px #23669c;
+}
+@media only screen and (max-width: 400px) {
+    .mainHeading{
+        font-size: 26px;
+    }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Binary from './binary';
 import './myStyle.css';
-const ar=['-4','5','53','66','96','100','200','538','700','1000'];
+const ar=['-4','5','53','66','96','100','200','326','646','777','932'];
 const n=ar.length;
 
 
@@ -97,18 +97,18 @@ class BinaryParent extends Component {
     }
 
     render() {
-        let str=this.state.start===1? <button className="button button4" onClick={this.binarySearch()}>Run</button> : <button className="button button4" onClick={()=>this.binarySearch()}>Run</button>
+        let str=this.state.start===1? <button className="button button4" style={{padding:'5px 14px'}} onClick={this.binarySearch()}>Run</button> : <button className="button button4" style={{padding:'5px 14px'}} onClick={()=>this.binarySearch()}>Run</button>
         return (
             <center>
             <div>
                 <Binary l={this.state.l} r={this.state.r} ar={ar} srch={this.state.search} check={this.state.check} />
                 <br/><br/>
-                <label>Enter Search Element</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <label style={{fontFamily:'Georgia'}}>Enter Search Element</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type='text' value={this.state.search} onChange={this.searchElementChange} className='txt txt2'></input>
                 <br/>
                 {str}
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button className="button button4" type='submit' onClick={()=>this.reset()}>Reset</button>
+                <button className="button button4" type='submit' style={{padding:'5px 14px'}} onClick={()=>this.reset()}>Reset</button>
                 <div id="steps">{this.state.steps}</div>
             </div>
             </center>

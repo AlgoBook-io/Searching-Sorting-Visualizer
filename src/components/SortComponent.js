@@ -909,7 +909,8 @@ class BubbleSort extends Component {
             ))
         return (
             <div>
-            <h1 style={{color:'black'}}>Sorting Visualizer</h1>
+            <div>
+            <h1 className="mainHeading" style={{color:'black'}}>Sorting Visualizer</h1>
             
             <button className="button button4" onClick={()=>this.bubbleSort()} id='bubblesort'>Bubble Sort</button>
             <button className="button button4" onClick={()=>this.selectionSort()} id='selectionsort'>Selection Sort</button>
@@ -918,17 +919,18 @@ class BubbleSort extends Component {
             <button className="button button4" onClick={()=>this.quickSort()} id='quicksort'>Quick Sort</button>
             <button className="button button4" onClick={()=>this.resetArray()} id='reset'>Reset</button>
             <button className="button button4" onClick={()=>this.skipAnimations()} id='skip'>Skip</button>
-
-            <span><b>Data size </b></span>
-            
+            </div>
+            <div>
+            <span style={{fontFamily:'Georgia'}}><b>Data size </b></span>
             <input type="range"  min={2} max={maxn} defaultValue={4} onChange={()=>this.changeArrSize()} className="slider" id="arr_size"/>
-            <span style={{backgroundColor:'gray',color:'white'}}>{this.state.n}
+            <span style={{backgroundColor:'gray',color:'white',borderRadius:'6px'}}> {this.state.n}&nbsp;
             </span>
-            <span><b> Speed </b></span>
+            <span style={{fontFamily:'Georgia'}}><b> Speed </b></span>
             <input type="range"  min={1} max={1505} defaultValue={751} onChange={()=>this.changeDelay()} className="slider" id="delay"/>
-            <span style={{backgroundColor:'gray',color:'white'}}>{strdly}</span>
+            <span style={{backgroundColor:'gray',color:'white',borderRadius:'8px'}}> {strdly}&nbsp;</span>
             <div className="array-container">
             { str }
+            </div>
             </div>
             </div>
         )
