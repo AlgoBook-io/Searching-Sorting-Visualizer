@@ -165,16 +165,13 @@ class BubbleSort extends Component {
         for(let i=0;i<this.state.n;i++)
         {
             arr_bar[i].style.transform='translateX(0px)';
+            arr_bar[i].style.backgroundColor=color1;
         }
         let arr=this.state.ar;
         arr.sort(function(a, b){return a - b});
         this.setState({
             ar:arr
         })
-        for(let i=0;i<this.state.n;i++)
-        {
-            arr_bar[i].style.backgroundColor=color1;
-        }
         this.buttons(false,800);
         timeouts=[];
         skip=false;
