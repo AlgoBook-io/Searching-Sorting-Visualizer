@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {NavLink,Switch,Route,Redirect} from 'react-router-dom';
+import {Switch,Route,Redirect} from 'react-router-dom';
 import Search from './Search';
 import HomeComponent from './HomeComponent';
 import Sort from './SortComponent';

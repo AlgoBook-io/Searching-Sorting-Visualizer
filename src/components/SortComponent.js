@@ -899,40 +899,48 @@ class BubbleSort extends Component {
         strdly+='ms delay'
         else strdly+=' ms delay'
         let ctr1=0;
-         if(reset===false)
+        if(reset===false)
         str=this.state.ar.map((x) => (
             <div className="array-bar" key={ctr1++ + 'e'} style={{backgroundColor: 'blue',height: `${x}px`, width:`${width}px`}}> </div>
             ))
         else
         str=this.state.ar.map((x) => (
-            <div className="array-bar" key={ctr1++ + 'w'} style={{backgroundColor: 'blue',height: `${x}px`, width:`${width}px`, transform:'translateX(0px)', transition:`transform ${this.state.delay}ms linear`}}> </div>
+            <div className="array-bar" key={ctr1++ + 'w'} style={{backgroundColor: 'blue',height: `${x}px`, width:`${width}px`, transform:'translateX(0px)', transition:`transform ${this.state.delay}ms linear,height 0.1s linear`}}> </div>
             ))
         return (
-            <div>
-            <div>
+            <center>
             <h1 className="mainHeading" style={{color:'black'}}>Sorting Visualizer</h1>
+            <div className="row" style={{width:'95%',borderTop:'5px'}}>
+            <div className="col-md-6 box">
             
             <button className="button button4" onClick={()=>this.bubbleSort()} id='bubblesort'>Bubble Sort</button>
             <button className="button button4" onClick={()=>this.selectionSort()} id='selectionsort'>Selection Sort</button>
             <button className="button button4" onClick={()=>this.insertionSort()} id='insertionsort'>Insertion Sort</button>
             <button className="button button4" onClick={()=>this.mergeSort()} id='mergesort'>Merge Sort</button>
             <button className="button button4" onClick={()=>this.quickSort()} id='quicksort'>Quick Sort</button>
-            <button className="button button4" onClick={()=>this.resetArray()} id='reset'>Reset</button>
+            <button className="button button4" onClick={()=>this.resetArray()} id='reset'>Reset Values</button>
             <button className="button button4" onClick={()=>this.skipAnimations()} id='skip'>Skip</button>
             </div>
+            <div className="col-md-3 box">
             <div>
-            <span style={{fontFamily:'Georgia'}}><b>Data size </b></span>
+            <span style={{fontFamily:'Georgia',cursor:'default'}}><b>No. of bars </b></span>
             <input type="range"  min={2} max={maxn} defaultValue={4} onChange={()=>this.changeArrSize()} className="slider" id="arr_size"/>
-            <span style={{backgroundColor:'gray',color:'white',borderRadius:'6px'}}> {this.state.n}&nbsp;
+            <span style={{backgroundColor:'rgb(212, 210, 231)',color:'black',borderRadius:'4px',cursor:'default'}}> {this.state.n}&nbsp;
             </span>
-            <span style={{fontFamily:'Georgia'}}><b> Speed </b></span>
+            </div>
+            </div>
+            <div className="col-md-3 box">
+            <span style={{fontFamily:'Georgia',cursor:'default'}}><b> Speed </b></span>
             <input type="range"  min={1} max={1505} defaultValue={751} onChange={()=>this.changeDelay()} className="slider" id="delay"/>
-            <span style={{backgroundColor:'gray',color:'white',borderRadius:'8px'}}> {strdly}&nbsp;</span>
-            <div className="array-container">
+            <span style={{backgroundColor:'rgb(212, 210, 231)',color:'black',borderRadius:'4px',cursor:'default',float:''}}> {strdly}&nbsp;</span>
+            </div>
+            <div className="box array-container" style={{border:'1px solid #ccc',paddingTop:'2%',paddingBottom:'1%',backgroundColor:'#fafafa'}}>
+            
             { str }
+            <div className="array-bar" style={{backgroundColor: '#f2f2f2',height: `480px`, width:`0.1px`}}> </div>
             </div>
             </div>
-            </div>
+            </center>
         )
     }
 }

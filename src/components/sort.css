@@ -1,14 +1,14 @@
 .array-container {
-    position: absolute;
+    position: relative;
     left:5%;
-    top:190px;
+    margin-top: 2%;
     width: 90%;
+    display: block;
   }
   
   .array-bar {
     display: inline-block;
     margin: 0 1px;
-    transition: height 1s ;
   }
 
 
@@ -18,13 +18,14 @@
   
   .slider {
     -webkit-appearance: none;
-    width: 10%;
+    width: 40%;
     height: 5px;
     background: #ffffff;
     border: 1px solid blue;
     opacity: 0.8;
+    transition-delay: 1s;
     -webkit-transition: .2s;
-    transition: opacity .2s;
+    transition: all .2s;
   }
   
   .slider:hover {
@@ -41,6 +42,7 @@
     height: 10px;
     background: rgb(0, 0, 0);
     cursor: pointer;
+    transition: all 1s;
   }
   
   .slider::-moz-range-thumb {
@@ -58,3 +60,22 @@
     cursor: not-allowed;
   }
   
+  .box {
+  background-color: #fafafa;
+  transition: box-shadow .3s;
+  padding-top: 1.5%;
+  padding-bottom: 1%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.box:hover{
+  box-shadow: 0 0 6px rgba(33,33,33,.2); 
+}
+.box2{
+  border-radius: 1%;
+  transition: box-shadow .3s;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  box-shadow: 0 0 6px rgba(33,33,33,.2); 
+}
