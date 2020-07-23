@@ -3,7 +3,7 @@ import Linear from './linear';
 import './myStyle.css';
 
 let arr=['372','5','4','1','6','7','54','6','32','8765','99'];
-const n=arr.length;
+let n=arr.length;
 class LinearParent extends Component {
     constructor(props) {
         super(props);
@@ -81,11 +81,46 @@ class LinearParent extends Component {
             search:event.target.value
         })
     }
+
+    removeItem=(index)=>{
+        arr.splice(index, 1);
+        n = arr.length;
+        this.setState({
+            r: n-1
+        })
+    }
+
+    addItem=()=>{
+        arr.push(this.title.value);
+        n = arr.length;
+        this.setState({
+            r: n-1
+        })
+        this.title.value = '';
+    }
     render() {
         let str=this.state.start===1? <button className="button button4" style={{padding:'5px 14px'}} onClick={this.linearSearch()}>Run</button> : <button className="button button4" style={{padding:'5px 14px'}} onClick={()=>this.linearSearch()}>Run</button>
+        let items = arr.map((n, index) => {return(<span id="items" key={index}>{n} <button key={index} onClick={() => {this.removeItem(index)}} type="button" className="close"><span>&times;</span></button></span>)})
         return (
             <div>
                 <Linear ar={arr} index={this.state.index} srch={this.state.search} check={this.check}/>
+                <br/><br/>
+                <div className="container">
+                    <div className="row">
+                        <label style={{fontFamily:'Georgia', paddingTop: '10px'}}>Elements are: </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        {items}
+                    </div>
+                    <div className="row mt-5">
+                        <div className="col-12 col-sm-4 col-lg-3 col-xl-2 text-sm-right">
+                            <label style={{fontFamily:'Georgia'}}>Add New Element</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                        <div className="col-12 col-sm-8 col-lg-9 col-xl-10 text-sm-left">
+                            <input type='text' ref={(c) => this.title = c} name="title" className='txt txt2'></input>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <button className="button button4" type='submit' style={{padding:'5px 14px'}} onClick={()=>this.addItem()}>Add</button>
+                        </div>
+                    </div>
+                </div>
                 <br/><br/>
                 <label style={{fontFamily:'Georgia'}}>Enter Search Element</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <input type='text' value={this.state.search} onChange={this.searchElementChange} className='txt txt2'></input>
