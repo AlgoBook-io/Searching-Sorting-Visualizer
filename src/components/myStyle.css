@@ -113,8 +113,8 @@ h1 {
 }
 input
 {
-	font-family:Monotype Corsiva;
-	font-size: 20px; 
+	font-family:Monotype Corsiva !important;
+	font-size: 20px !important; 
 }
 
 .mainHeading{

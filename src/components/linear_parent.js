@@ -91,12 +91,14 @@ class LinearParent extends Component {
     }
 
     addItem=()=>{
-        arr.push(this.title.value);
-        n = arr.length;
-        this.setState({
-            r: n-1
-        })
-        this.title.value = '';
+        if(this.title.value !== ''){
+            arr.push(this.title.value);
+            n = arr.length;
+            this.setState({
+                r: n-1
+            })
+            this.title.value = '';
+        }
     }
     render() {
         let str=this.state.start===1? <button className="button button4" style={{padding:'5px 14px'}} onClick={this.linearSearch()}>Run</button> : <button className="button button4" style={{padding:'5px 14px'}} onClick={()=>this.linearSearch()}>Run</button>

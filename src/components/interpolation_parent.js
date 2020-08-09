@@ -1,21 +1,20 @@
 import React, { Component } from 'react'
-import Binary from './binary';
+import Interpolation from './interpolation';
 import './myStyle.css';
 let ar=['-4','5','53','66','96','100','200','326','646','777','932'];
 let n=ar.length;
 
-
-class BinaryParent extends Component {
-    constructor(props) {
+class InterpolationParent extends Component{
+    constructor(props){
         super(props)
         this.state = {
-             l:0,
-             r:n-1,
-             start:0,
-             search:'',
-             flag:false,
-             steps:' '
-        }
+            l:0,
+            r:n-1,
+            start:0,
+            search:'',
+            flag:false,
+            steps:' '
+       }
     }
 
     check=()=>{
@@ -42,10 +41,10 @@ class BinaryParent extends Component {
         })
     }
 
-    binarySearch(){
+    interpolationSearch(){
         if(this.state.search==='')
         return;
-        if(this.state.l>this.state.r)
+        if(this.state.l>this.state.r || parseInt(this.state.search) < ar[this.state.l] || parseInt(this.state.search) > ar[this.state.r])
         {
             this.setState({
                 steps:'Search element not present in array',
@@ -55,26 +54,46 @@ class BinaryParent extends Component {
             })
             return;
         }
+        if(this.state.l === this.state.r)
+        {
+            if(ar[this.state.l] === parseInt(this.state.search)){
+                this.setState(prev=>({
+                    flag:true,
+                    start:0,
+                    steps:`Search element found at position ${this.state.l}`
+                }))
+                return;
+            }
+            else{
+                this.setState({
+                    steps:'Search element not present in array',
+                    start:0
+                },function(){
+                    this.forceUpdate();
+                })
+                return;
+            }
+        }
         if(this.state.flag===true)
         return;
         setTimeout(() => {
-            let mid=Math.floor((this.state.l+this.state.r)/2);
-            console.log(this.state.search+" "+ar[mid]);
-            if(parseInt(this.state.search)>parseInt(ar[mid]))
+            let pos  = this.state.l + Math.floor(((Math.round(this.state.r - this.state.l) / ( ar[this.state.r] - ar[this.state.l])) * ( parseInt(this.state.search) - ar[this.state.l])));
+            console.log(this.state.search+" "+ar[pos]);
+            if(parseInt(this.state.search)>parseInt(ar[pos]))
             {
                 this.setState(prev=>({
-                    l:mid+1,
+                    l:pos+1,
                     start:1,
-//                    steps:'l= '+this.state.l+' r= '+this.state.r+' mid= '+mid+' x > ar[mid]'
+//                    steps:'l= '+this.state.l+' r= '+this.state.r+' pos= '+pos+' x > ar[pos]'
                 }),function(){
                     console.log("D "+this.state.l);
                 })
             }
-            else if(parseInt(this.state.search)<parseInt(ar[mid])){
+            else if(parseInt(this.state.search)<parseInt(ar[pos])){
                 this.setState(prev=>({
-                    r:mid-1,
+                    r:pos-1,
                     start:1,
-//                    steps:`l= ${this.state.l} r= ${this.state.r} mid= ${mid} x < ar[mid]`
+//                    steps:`l= ${this.state.l} r= ${this.state.r} pos= ${pos} x < ar[pos]`
                 }),function(){
                     console.log("S "+this.state.r);
                 })
@@ -84,7 +103,7 @@ class BinaryParent extends Component {
                 this.setState(prev=>({
                     flag:true,
                     start:0,
-                    steps:`Search element found at position ${mid}`
+                    steps:`Search element found at position ${pos}`
                 }))
             }
         }, 1500);
@@ -107,7 +126,8 @@ class BinaryParent extends Component {
     addItem=()=>{
         if(this.title.value !== ''){
             var el = parseInt(this.title.value);
-            ar.splice(this.findLoc(el, ar) + 1, 0, this.title.value);
+            n = ar.length;
+            ar.splice(this.findLoc(el, ar, 0, n - 1) + 1, 0, this.title.value);
             n = ar.length;
             this.setState({
                 r: n-1
@@ -117,27 +137,29 @@ class BinaryParent extends Component {
     }
 
     findLoc=(el, arr, st, en)=>{
-        st = st || 0;
-        en = en || arr.length;
-        var pivot = parseInt(st + (en - st) / 2, 10);
-        if (en == 1){
-            if (arr[pivot] > el) return (pivot - 1);
+        if (en === st){
+            if (ar[en] > el) return (en - 1);
+            else return en;
         }
-        if (en - st <= 1 || arr[pivot] === el) return pivot;
-        if (arr[pivot] < el) {
-            return this.findLoc(el, arr, pivot, en);
-        } else {
-            return this.findLoc(el, arr, st, pivot);
+        if (ar[st] >= el) return (st - 1);
+        if (ar[en] <= el) return en;
+        var pos  = st + Math.floor(((Math.round(en - st) / ( ar[en] - ar[st])) * ( el - ar[st])));
+        if (en - st <= 1 || parseInt(arr[pos]) == el) return pos;
+        if (parseInt(arr[pos]) < el) {
+            return this.findLoc(el, arr, pos + 1, en);
+        }
+        if (parseInt(arr[pos]) > el) {
+            return this.findLoc(el, arr, st, pos - 1);
         }
     }
 
-    render() {
-        let str=this.state.start===1? <button className="button button4" style={{padding:'5px 14px'}} onClick={this.binarySearch()}>Run</button> : <button className="button button4" style={{padding:'5px 14px'}} onClick={()=>this.binarySearch()}>Run</button>
+    render(){
+        let str=this.state.start===1? <button className="button button4" style={{padding:'5px 14px'}} onClick={this.interpolationSearch()}>Run</button> : <button className="button button4" style={{padding:'5px 14px'}} onClick={()=>this.interpolationSearch()}>Run</button>
         let items = ar.map((n, index) => {return(<span id="items" key={index}>{n} <button key={index} onClick={() => {this.removeItem(index)}} type="button" className="close"><span>&times;</span></button></span>)})
         return (
             <center>
                 <div>
-                    <Binary l={this.state.l} r={this.state.r} ar={ar} srch={this.state.search} check={this.state.check} />
+                    <Interpolation l={this.state.l} r={this.state.r} ar={ar} srch={this.state.search} />
                     <br/><br/>
                     <div className="container">
                         <div className="row">
@@ -169,4 +191,4 @@ class BinaryParent extends Component {
     }
 }
 
-export default BinaryParent
+export default InterpolationParent
