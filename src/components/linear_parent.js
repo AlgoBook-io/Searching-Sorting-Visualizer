@@ -105,10 +105,10 @@ class LinearParent extends Component {
         let items = arr.map((n, index) => {return(<span id="items" key={index}>{n} <button key={index} onClick={() => {this.removeItem(index)}} type="button" className="close"><span>&times;</span></button></span>)})
         return (
             <div>
-                <Linear ar={arr} index={this.state.index} srch={this.state.search} check={this.check}/>
-                <br/><br/>
-                <div className="container">
-                    <div className="row">
+                <div className="container main-container">
+                    <Linear ar={arr} index={this.state.index} srch={this.state.search} check={this.check}/>
+                    <br/><br/>
+                    <div className="row ml-2">
                         <label style={{fontFamily:'Georgia', paddingTop: '10px'}}>Elements are: </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         {items}
                     </div>
