@@ -137,10 +137,10 @@ class BinaryParent extends Component {
         return (
             <center>
                 <div>
-                    <Binary l={this.state.l} r={this.state.r} ar={ar} srch={this.state.search} check={this.state.check} />
-                    <br/><br/>
-                    <div className="container">
-                        <div className="row">
+                    <div className="container main-container">
+                        <Binary l={this.state.l} r={this.state.r} ar={ar} srch={this.state.search} check={this.state.check} />
+                        <br/><br/>
+                        <div className="row ml-2">
                             <label style={{fontFamily:'Georgia', paddingTop: '10px'}}>Elements are: </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             {items}
                         </div>
